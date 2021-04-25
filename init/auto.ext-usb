@@ -1,0 +1,1 @@
+data	-fstype=auto,rw,gid=1000,umask=000	:"/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_08606E6D402DE34117122195-0:0"

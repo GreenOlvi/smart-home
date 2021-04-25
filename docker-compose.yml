@@ -1,0 +1,65 @@
+version: "3"
+
+networks:
+  comms:
+    external: false
+
+services:
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    restart: always
+    networks: [comms]
+    ports:
+      - "8086:8086"
+    volumes:
+      - db-data:/var/lib/influxdb
+      - ./influxdb/influxdb.config:/etc/influxdb/influxdb.conf:ro
+      - ./influxdb/init:/docker-entrypoint-initdb.d
+    environment:
+      - INFLUXDB_ADMIN_USER=${INFLUXDB_USERNAME}
+      - INFLUXDB_ADMIN_PASSWORD=${INFLUXDB_PASSWORD}
+
+  grafana:
+    # image: grafana/grafana
+    build: grafana/
+    container_name: grafana
+    restart: always
+    networks: [comms]
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+    environment:
+      - GF_STRAVA_DS_DATA_PATH=/var/lib/grafana/strava
+
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    restart: always
+    networks: [comms]
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto-data:/mosquitto/data
+
+  node-red:
+    image: nodered/node-red
+    container_name: node-red
+    restart: always
+    networks: [comms]
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./node-red/data:/data
+    environment:
+      - TZ=Europe/Warsaw
+
+volumes:
+  db-data: {}
+  mosquitto-data: {}
+  grafana-data: {}

@@ -1,0 +1,4 @@
+CREATE USER grafana WITH PASSWORD 'grafana123'
+GRANT READ ON sensors TO grafana
+CREATE USER nodered WITH PASSWORD 'nodered123'
+GRANT WRITE ON sensors TO nodered

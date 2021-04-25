@@ -1,0 +1,5 @@
+FROM grafana/grafana
+COPY data /var/lib/grafana
+RUN chown -R grafana /var/lib/grafana
+# RUN grafana-cli plugins install grafana-strava-datasource
+VOLUME /var/lib/grafana
