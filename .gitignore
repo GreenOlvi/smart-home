@@ -3,3 +3,4 @@ grafana/data/
 influxdb/init/backup/
 init/get-docker.sh
 node-red/data/
+backup/config
