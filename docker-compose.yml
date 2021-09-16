@@ -34,6 +34,7 @@ services:
       - grafana-data:/var/lib/grafana
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
     environment:
+      - GF_SERVER_DOMAIN=${SERVER_DOMAIN_NAME}
       - GF_STRAVA_DS_DATA_PATH=/var/lib/grafana/strava
 
   mosquitto:
