@@ -8,3 +8,7 @@ rm get-docker.sh
 # Install docker-compose
 sudo apt-get -y install libffi-dev libssl-dev python3-dev python3 python3-pip
 sudo pip3 install docker-compose
+
+# Enable cgroups
+sudo echo " cgroup_memory=1 cgroup_enable=memory" | cat >> /boot/cmdline.txt
+sudo echo "cgroup_enable=1" | cat >> /boot/config.txt
