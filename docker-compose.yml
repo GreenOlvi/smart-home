@@ -65,9 +65,6 @@ services:
     build:
       context: ./www
       dockerfile: SmartHomeWWW/Dockerfile
-      args:
-        - "--memory 400m"
-        - "--memory-swap 500m"
     container_name: www
     restart: always
     networks: [comms]
@@ -75,6 +72,10 @@ services:
       - "8080:80"
     volumes:
       - ${FIRMWARE_DIRECTORY}:/firmwares/
+    deploy:
+      resources:
+        limits:
+          memory: 400M
 
 volumes:
   db-data: {}
