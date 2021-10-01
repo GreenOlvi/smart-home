@@ -6,4 +6,7 @@ init/get-docker.sh
 node-red/data/*
 !node-red/data/settings.js
 
+nginx/certs/*
+!nginx/certs/.keep_dir
+
 backup/config
