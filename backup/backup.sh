@@ -1,5 +1,3 @@
-#!/bin/bash
-
 if [ -f ../.env ]; then
    source ../.env
    export BACKUP_DIR
