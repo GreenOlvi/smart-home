@@ -24,7 +24,6 @@ services:
   grafana:
     build: 
       context: ./grafana
-      dockerfile: ./grafana/Dockerfile
     container_name: grafana
     restart: always
     networks: [comms]
@@ -51,14 +50,15 @@ services:
       - mosquitto-log:/mosquitto/log
 
   node-red:
-    image: nodered/node-red
+    build:
+      context: ./node-red
     container_name: node-red
     restart: always
     networks: [comms]
     # ports:
     #   - "1880:1880"
     volumes:
-      - ./node-red/data:/data
+      - node-red-data:/data
     environment:
       - TZ=Europe/Warsaw
 
@@ -100,3 +100,4 @@ volumes:
   mosquitto-data: {}
   mosquitto-log: {}
   grafana-data: {}
+  node-red-data: {}

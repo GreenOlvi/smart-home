@@ -1,0 +1,9 @@
+FROM nodered/node-red
+
+WORKDIR /data
+COPY ./data/package.json .
+RUN npm install --unsafe-perm --no-update-notifier --no-fund --only=production
+
+COPY ./data/* .
+
+VOLUME /data

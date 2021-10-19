@@ -1,12 +1,19 @@
 .env
-grafana/data/
-influxdb/init/backup/
+
+grafana/data/*
+!grafana/data/.keep_dir
+
+influxdb/init/backup/*
+!influxdb/init/backup/.keep_dir
+
 init/get-docker.sh
 
 node-red/data/*
+!node-red/data/package.json
 !node-red/data/settings.js
 
 nginx/certs/*
 !nginx/certs/.keep_dir
 
-backup/config
+backup/config/*
+!backup/config/.keep_dir
