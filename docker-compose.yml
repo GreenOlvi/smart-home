@@ -60,7 +60,7 @@ services:
     volumes:
       - node-red-data:/data
     environment:
-      - TZ=Europe/Warsaw
+      - TZ=${TIMEZONE}
 
   www:
     build:
@@ -73,10 +73,8 @@ services:
     #   - "8080:80"
     volumes:
       - ${FIRMWARE_DIRECTORY}:/firmwares/
-    deploy:
-      resources:
-        limits:
-          memory: 400M
+    environment:
+      - TZ=${TIMEZONE}
 
   nginx:
     image: "nginx"
