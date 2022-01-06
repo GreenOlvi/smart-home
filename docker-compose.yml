@@ -20,7 +20,7 @@ services:
   www:
     build:
       context: ./www
-      dockerfile: SmartHomeWWW/Dockerfile
+      dockerfile: Server/Dockerfile
     container_name: www
     restart: always
     networks: [smart-home_comms]
