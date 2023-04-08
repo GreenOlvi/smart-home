@@ -3,6 +3,7 @@ FROM grafana/grafana
 USER root
 COPY data /var/lib/grafana
 RUN chown -R grafana /var/lib/grafana
+RUN chmod 777 /tmp/
 
 USER grafana
 RUN grafana-cli plugins install grafana-strava-datasource
