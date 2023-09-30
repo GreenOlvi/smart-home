@@ -1,4 +1,4 @@
-FROM nodered/node-red
+FROM nodered/node-red:latest
 WORKDIR /data
 COPY ./data/package.json .
 RUN npm install --unsafe-perm=true --no-update-notifier --no-fund --only=production
