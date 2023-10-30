@@ -1,4 +1,4 @@
-FROM grafana/grafana:10.1.2
+FROM grafana/grafana:10.2.0
 
 USER root
 COPY data /var/lib/grafana
